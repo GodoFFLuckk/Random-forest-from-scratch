@@ -1,0 +1,227 @@
+﻿<Window x:Class="Random_Forest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Random_Forest"
+        mc:Ignorable="d"
+        Title="Your Window Title" Height="450" Width="800"
+        MouseLeftButtonDown="Window_MouseLeftButtonDown">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <StackPanel Grid.Row="0" Grid.Column="0" Margin="10">
+            <TextBlock Text="Random Forest settings" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"/>
+            <TextBox x:Name="TestSizeTextBox" Width="200" Height="30" ToolTip="Enter the size of the test set.">
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <VisualBrush Stretch="None">
+                                            <VisualBrush.Visual>
+                                                <TextBlock Text="Enter test size" Foreground="Gray" />
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="TreeDepthTextBox" Width="200" Height="30" ToolTip="Enter the maximum depth for each tree.">
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <VisualBrush Stretch="None">
+                                            <VisualBrush.Visual>
+                                                <TextBlock Text="Enter tree depth" Foreground="Gray" />
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="MinToSplitTextBox" Width="200" Height="30" ToolTip="Enter the minimum number of examples required for a node to be split.">
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <VisualBrush Stretch="None">
+                                            <VisualBrush.Visual>
+                                                <TextBlock Text="Enter minimum examples required to split" Foreground="Gray" />
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="TreeNumberTextBox" Width="200" Height="30" ToolTip="Enter the total number of trees for the forest.">
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <VisualBrush Stretch="None">
+                                            <VisualBrush.Visual>
+                                                <TextBlock Text="Enter number of trees" Foreground="Gray" />
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="SeedForestTextBox" Width="200" Height="30" ToolTip="Enter the seed value for random number generation.">
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <VisualBrush Stretch="None">
+                                            <VisualBrush.Visual>
+                                                <TextBlock Text="Enter seed" Foreground="Gray" />
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="FeautureSubsamplingTextBox" Width="200" Height="30" ToolTip="Enter the proportion of features to be considered for each split.">
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <VisualBrush Stretch="None">
+                                            <VisualBrush.Visual>
+                                                <TextBlock Text="Enter value of a subsample of features" Foreground="Gray" />
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Select Split Criterion:" FontWeight="Bold" Margin="0,0,0,5"/>
+                <RadioButton x:Name="GiniRadioButton" Content="gini" GroupName="Criterion" IsChecked="True"/>
+                <RadioButton x:Name="EntropyRadioButton" Content="entropy" GroupName="Criterion"/>
+            </StackPanel>
+        </StackPanel>
+        <StackPanel Grid.Row="0" Grid.Column="1" Margin="10">
+            <TextBlock Text="Artificial dataset settings" FontWeight="Bold" FontSize="18" Margin="0,0,0,10"/>
+            <TextBox x:Name="NumClassesTextBox" Width="200" Height="30" ToolTip="Enter the number of classes.">
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <VisualBrush Stretch="None">
+                                            <VisualBrush.Visual>
+                                                <TextBlock Text="Enter number of classes" Foreground="Gray" />
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="NumSamplesTextBoxTextBox" Width="200" Height="30" ToolTip="Number of samples.">
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <VisualBrush Stretch="None">
+                                            <VisualBrush.Visual>
+                                                <TextBlock Text="Enter number of samples" Foreground="Gray" />
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="NumFeaturesTextBoxTextBox" Width="200" Height="30" ToolTip="Number of features.">
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <VisualBrush Stretch="None">
+                                            <VisualBrush.Visual>
+                                                <TextBlock Text="Enter number of features" Foreground="Gray" />
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <TextBox x:Name="SeedGenerationTextBox" Width="200" Height="30" ToolTip="Seed for dataset generation.">
+                <TextBox.Style>
+                    <Style TargetType="{x:Type TextBox}">
+                        <Style.Triggers>
+                            <Trigger Property="Text" Value="">
+                                <Setter Property="Background">
+                                    <Setter.Value>
+                                        <VisualBrush Stretch="None">
+                                            <VisualBrush.Visual>
+                                                <TextBlock Text="Enter seed for dataset generation" Foreground="Gray" />
+                                            </VisualBrush.Visual>
+                                        </VisualBrush>
+                                    </Setter.Value>
+                                </Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </TextBox.Style>
+            </TextBox>
+            <StackPanel Orientation="Vertical">
+                <TextBlock Text="Use artificial dataset?" FontWeight="Bold" Margin="0,0,0,5"/>
+                <RadioButton x:Name="YesRadioButton" Content="Yes" GroupName="Dataset" IsChecked="True"/>
+                <RadioButton x:Name="NoRadioButton" Content="No" GroupName="Dataset"/>
+            </StackPanel>
+        </StackPanel>
+        <Button Grid.Row="1" Grid.ColumnSpan="2" Content="Start" Click="StartButton_Click" />
+    </Grid>
+</Window>

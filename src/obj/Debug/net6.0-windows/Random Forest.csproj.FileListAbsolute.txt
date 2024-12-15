@@ -1,0 +1,22 @@
+P:\Random Forest\src\bin\Debug\net6.0-windows\Random Forest.exe
+P:\Random Forest\src\bin\Debug\net6.0-windows\Random Forest.deps.json
+P:\Random Forest\src\bin\Debug\net6.0-windows\Random Forest.runtimeconfig.json
+P:\Random Forest\src\bin\Debug\net6.0-windows\Random Forest.dll
+P:\Random Forest\src\bin\Debug\net6.0-windows\Random Forest.pdb
+P:\Random Forest\src\obj\Debug\net6.0-windows\MainWindow.g.cs
+P:\Random Forest\src\obj\Debug\net6.0-windows\Visualization.g.cs
+P:\Random Forest\src\obj\Debug\net6.0-windows\App.g.cs
+P:\Random Forest\src\obj\Debug\net6.0-windows\Random Forest_MarkupCompile.cache
+P:\Random Forest\src\obj\Debug\net6.0-windows\Random Forest_MarkupCompile.lref
+P:\Random Forest\src\obj\Debug\net6.0-windows\MainWindow.baml
+P:\Random Forest\src\obj\Debug\net6.0-windows\Visualization.baml
+P:\Random Forest\src\obj\Debug\net6.0-windows\Random Forest.g.resources
+P:\Random Forest\src\obj\Debug\net6.0-windows\Random Forest.GeneratedMSBuildEditorConfig.editorconfig
+P:\Random Forest\src\obj\Debug\net6.0-windows\Random Forest.AssemblyInfoInputs.cache
+P:\Random Forest\src\obj\Debug\net6.0-windows\Random Forest.AssemblyInfo.cs
+P:\Random Forest\src\obj\Debug\net6.0-windows\Random Forest.csproj.CoreCompileInputs.cache
+P:\Random Forest\src\obj\Debug\net6.0-windows\Random Forest.dll
+P:\Random Forest\src\obj\Debug\net6.0-windows\refint\Random Forest.dll
+P:\Random Forest\src\obj\Debug\net6.0-windows\Random Forest.pdb
+P:\Random Forest\src\obj\Debug\net6.0-windows\Random Forest.genruntimeconfig.cache
+P:\Random Forest\src\obj\Debug\net6.0-windows\ref\Random Forest.dll
